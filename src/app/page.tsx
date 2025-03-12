@@ -1,14 +1,10 @@
-import Image from "next/image";
+import SignUpForm from "@/src/components/signup-form";
 
 export default function Home() {
   return (
-    <main>
-      <div>
-        <h1>Home</h1>
-        <input type="text" placeholder="name" />
-        <input type="text" placeholder="email" />
-        <button>SUBMIT</button>
-      </div>
-    </main>
+    <div>
+      <h1>Home</h1>
+      <SignUpForm />
+    </div>
   );
 }

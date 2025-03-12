@@ -5,12 +5,15 @@ import WelcomeEmail from "@/src/emails/welcome";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function GET() {
+export async function POST(request: Request) {
+  const { firstName } = await request.json();
   await resend.emails.send({
-    from: "example@email.dev",
-    to: "example@destination.dev",
+    from: "email@sender.com", //onboarding@resend.dev for testing purposes
+    to: "example@reciever.com", //input email here
     subject: "hello world",
-    react: WelcomeEmail(),
+    react: WelcomeEmail({
+      firstName,
+    }),
   });
 
   return NextResponse.json({

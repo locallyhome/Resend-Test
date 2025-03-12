@@ -15,17 +15,21 @@ interface NotionMagicLinkEmailProps {
   loginCode?: string;
 }
 
+interface WelcomeEmailProps {
+  firstName: string;
+}
+
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const WelcomeEmail = () => (
+export const WelcomeEmail = ({ firstName }: WelcomeEmailProps) => (
   <Html>
     <Head />
     <Body style={main}>
       <Preview>Log in with this magic link</Preview>
       <Container style={container}>
-        <Heading style={h1}>Login</Heading>
+        <Heading style={h1}>Welcome Aboard {firstName}!</Heading>
         <Link
           href="https://notion.so"
           target="_blank"
